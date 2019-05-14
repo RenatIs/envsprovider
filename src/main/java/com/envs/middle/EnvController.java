@@ -1,13 +1,11 @@
 package com.envs.middle;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @RestController
 @RequestMapping("/env")
@@ -16,10 +14,10 @@ public class EnvController {
 
     @GetMapping
     public List<Environment> getEnvironmentList() {
-        return findEnvsironments();
+        return findEnvironments();
     }
 
-    private List<Environment> findEnvsironments() {
+    private List<Environment> findEnvironments() {
         List<Environment> envs = new ArrayList();
 
         Random r = new Random();
@@ -29,7 +27,15 @@ public class EnvController {
             environment.setUsers(
                     Arrays.asList(new User(("user" + r.nextInt(100)), "pwd1"), new User(("user" + r.nextInt(100)), "pwd1")));
         });
-
         return envs;
+    }
+
+    @GetMapping("/{nameParam}")
+    public Environment getEnvironmentList(@PathVariable("nameParam") String name) {
+        List<Environment> allEnvs = findEnvironments();
+        Optional<Environment> found = allEnvs.stream()
+                .filter(env -> env.geteName().equalsIgnoreCase(name))
+                .findAny();
+        return found.orElse(null);
     }
 }
