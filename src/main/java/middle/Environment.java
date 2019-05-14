@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Environment {
-    private String eName, casinoName, pasAddress, oapiAddress;
+    private String eName;
+    private String casinoName;
+    private String pasAddress;
+    private String oapiAddress;
     private int port;
     private List<User> users;
 
@@ -18,6 +21,14 @@ public class Environment {
         this.oapiAddress = eDetails.get("address");
         this.pasAddress = eDetails.get("pasAddress");
         this.port = Integer.parseInt(eDetails.get("port"));
+    }
+
+    public Environment(String eName, String casinoName, String pasAddress, String oapiAddress, int port) {
+        this.eName = eName;
+        this.casinoName = casinoName;
+        this.pasAddress = pasAddress;
+        this.oapiAddress = oapiAddress;
+        this.port = port;
     }
 
     public List<User> getUsers() {
