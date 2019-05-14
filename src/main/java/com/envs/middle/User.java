@@ -1,4 +1,4 @@
-package middle;
+package com.envs.middle;
 
 public class User {
     private String userName, password;

@@ -1,4 +1,4 @@
-package middle;
+package com.envs.middle;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ public class EnvController {
 
     @GetMapping("/")
     public List<Environment> getEnvironmentList() {
-        return environmentList;
+        return findEnvsironments();
     }
 
     private List<Environment> findEnvsironments() {
