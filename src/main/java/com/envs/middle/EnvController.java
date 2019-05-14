@@ -19,6 +19,8 @@ public class EnvController {
 
     private List<Environment> findEnvsironments() {
         List<Environment> envs = new ArrayList();
+        envs.add(new Environment("bet365"));
+        envs.add(new Environment("marca"));
         return envs;
     }
 }
