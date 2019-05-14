@@ -4,6 +4,11 @@ public class User {
     private String userName, password;
     private int balanceInCents;
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public String getUserName() {
         return userName;
     }
