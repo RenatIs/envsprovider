@@ -31,6 +31,26 @@ public class Environment {
         this.port = port;
     }
 
+    public String geteName() {
+        return eName;
+    }
+
+    public String getCasinoName() {
+        return casinoName;
+    }
+
+    public String getPasAddress() {
+        return pasAddress;
+    }
+
+    public String getOapiAddress() {
+        return oapiAddress;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
     public List<User> getUsers() {
         return users;
     }
