@@ -31,7 +31,7 @@ public class Environment {
         this.port = port;
     }
 
-    public String geteName() {
+    public String getName() {
         return eName;
     }
 
