@@ -3,6 +3,8 @@ package com.envs.middle;
 public class User {
     private String userName, password;
     private int balanceInCents;
+    private boolean isAvailable;
+    private String lastTimeVerified;
 
     public User(String userName, String password) {
         this.userName = userName;
@@ -31,5 +33,21 @@ public class User {
 
     public void setBalanceInCents(int balanceInCents) {
         this.balanceInCents = balanceInCents;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public String getLastTimeVerified() {
+        return lastTimeVerified;
+    }
+
+    public void setLastTimeVerified(String lastTimeVerified) {
+        this.lastTimeVerified = lastTimeVerified;
     }
 }

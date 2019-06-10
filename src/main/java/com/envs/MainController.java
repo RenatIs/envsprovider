@@ -1,9 +1,11 @@
 package com.envs;
 
 
+import com.envs.db.DBController;
 import com.envs.db.DBHandler;
 import com.envs.middle.Environment;
 import com.envs.middle.User;
+import com.envs.oapi.OAPIController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +17,12 @@ import java.util.stream.IntStream;
 
 @RestController
 @RequestMapping("/env")
-public class MainController {
+public class MainController {           //should be replaced to another package (does not belong to PAS)
     private List<Environment> environmentList;
+
+
+    private DBController dbController;
+    private OAPIController oapiController;
 
     @GetMapping
     public List<Environment> getEnvironmentList() {
@@ -30,6 +36,13 @@ public class MainController {
                 .filter(env -> env.getName().equalsIgnoreCase(name))
                 .findAny();
         return found.orElse(null);
+    }
+
+    @GetMapping("/verifyUsers")
+    public void verifyThatUsersStillAvailable() {
+        User user = new User("loh", "pidr");
+        dbController.createUser(user);
+        oapiController.verifyThatUserIsAvailable(user);
     }
 
 
